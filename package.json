@@ -1,0 +1,19 @@
+{
+  "name": "@niamori/shivvie.monorepo",
+  "version": "0.0.0",
+  "author": "NiaMori <Hellc5261@gmail.com> (https://github.com/niamori)",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm run -r --color --parallel --stream dev",
+    "build": "pnpm run -r --color --parallel --stream build",
+    "lint": "pnpm run -r --color --parallel --stream lint",
+    "test": "pnpm run -r --color --parallel --stream test",
+    "bump": "bumpp package.json ./pkg/*/package.json --no-push --execute 'syncpack fix-mismatches --filter @niamori/shivvie.*'",
+    "release": "pnpm build && pnpm bump && pnpm m exec npm publish"
+  },
+  "devDependencies": {
+    "bumpp": "^9.1.1",
+    "syncpack": "^10.7.3"
+  }
+}

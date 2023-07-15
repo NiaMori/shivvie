@@ -38,9 +38,9 @@ async function resolveShivvieUri(uri: string) {
     return path.resolve(await fs.promises.realpath(segments))
   } else if (registry === 'gh') {
     const re = createRegExp(exactly(
-      exactly(word).as('scope'),
+      exactly(oneOrMore(charNotIn('/'))).as('scope'),
       exactly('/'),
-      exactly(word).as('name'),
+      exactly(oneOrMore(charNotIn('#/'))).as('name'),
       maybe(
         exactly('#'),
         oneOrMore(charNotIn('#/')),

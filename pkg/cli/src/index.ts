@@ -86,7 +86,11 @@ async function resolveShivvieUri(uri: string) {
 
     const modulePath = path.join(tempdir, subpath)
 
-    if (await fs.promises.stat(path.join(modulePath, 'package.json')).then(st => st.isFile()).catch(() => false)) {
+    async function isFile(path: string) {
+      return await fs.promises.stat(path).then(st => st.isFile()).catch(() => false)
+    }
+
+    if (await isFile(path.join(modulePath, 'package.json')) || await isFile(path.join(tempdir, 'package.json'))) {
       await installDependencies({ cwd: modulePath })
     }
 

@@ -13,6 +13,7 @@ import { rootTemporaryDirectory } from 'tempy'
 import { addDependency, installDependencies } from 'nypm'
 import { resolve as mllyResolve } from 'mlly'
 import { execShivvieModule } from '@niamori/shivvie.core'
+import packageJson from '../package.json'
 import { logger } from '@/logger'
 
 async function resolveShivvieUri(uri: string) {
@@ -131,6 +132,10 @@ async function resolveShivvieUri(uri: string) {
 program
   .showHelpAfterError(true)
   .showSuggestionAfterError(true)
+
+program
+  .name('shivvie')
+  .version(packageJson.version)
 
 program
   .command('exec')

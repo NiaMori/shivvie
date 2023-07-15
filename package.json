@@ -11,7 +11,7 @@
     "test": "pnpm run -r --color --parallel --stream test",
     "bump": "bumpp package.json ./pkg/*/package.json --no-push --execute 'pnpm run postbump'",
     "postbump": "syncpack fix-mismatches --filter @niamori/shivvie.* && pnpm i",
-    "release": "pnpm build && pnpm bump && pnpm m exec npm publish"
+    "release": "pnpm bump && pnpm build && pnpm m exec npm publish"
   },
   "devDependencies": {
     "bumpp": "^9.1.1",

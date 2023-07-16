@@ -9,8 +9,7 @@
     "build": "pnpm run -r --color --parallel --stream build",
     "lint": "pnpm run -r --color --parallel --stream lint",
     "test": "pnpm run -r --color --parallel --stream test",
-    "bump": "bumpp package.json ./pkg/*/package.json --no-push --execute 'pnpm run postbump'",
-    "postbump": "syncpack fix-mismatches --filter @niamori/shivvie.* && pnpm i",
+    "bump": "bumpp pnpm-lock.yaml package.json ./pkg/*/package.json --no-push --execute 'syncpack fix-mismatches --filter @niamori/shivvie.*'",
     "release": "pnpm bump && pnpm build && pnpm m exec npm publish"
   },
   "devDependencies": {

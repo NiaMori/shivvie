@@ -9,6 +9,8 @@
     "isolatedModules": true,
     "noEmit": true,
 
+    "resolveJsonModule": true,
+
     "paths": {
       "@/*": ["./src/*"]
     },

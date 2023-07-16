@@ -38,6 +38,7 @@
     "bundle-require": "^4.0.1",
     "chalk": "^5.3.0",
     "fast-glob": "^3.3.0",
+    "find-up": "^6.3.0",
     "handlebars": "^4.7.7",
     "immer": "^10.0.2",
     "mlly": "^1.4.0",

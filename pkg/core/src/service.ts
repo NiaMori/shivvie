@@ -1,9 +1,12 @@
 import nodePath from 'node:path'
+import fs from 'node:fs'
 import { define } from '@niamori/utils'
 import Handlebars from 'handlebars'
 import type { Draft } from 'immer'
 import type { manipulate } from '@niamori/json-manipulator'
 import { resolveSync as mllyResolveSync } from 'mlly'
+import { findUp, pathExists } from 'find-up'
+import { z } from 'zod'
 import type { ShivvieAction } from '@/action'
 import { ShivvieActionConstructor } from '@/action'
 
@@ -56,12 +59,33 @@ export interface ShivvieActionService {
   nun(props: { cwd?: string; names: string[] }): ShivvieAction
 }
 
-export function createShivvieService<T extends Record<string, unknown>>(props: {
+export async function createShivvieService<T extends Record<string, unknown>>(props: {
   i: T
   svModuleSourceDirPath: string
   targetDirPath: string
 }) {
   const { i, svModuleSourceDirPath, targetDirPath } = props
+
+  const registryPath = await findUp(async (directory) => {
+    const packageJsonPath = nodePath.join(directory, 'package.json')
+
+    if (await pathExists(packageJsonPath)) {
+      const packageJson = z.object({
+        keywords: z.array(z.string()).optional(),
+      }).parse(JSON.parse(await fs.promises.readFile(packageJsonPath, 'utf-8')))
+
+      if (packageJson.keywords?.includes('shivvie-registry')) {
+        return directory
+      } else {
+        return undefined
+      }
+    } else {
+      return undefined
+    }
+  }, {
+    type: 'directory',
+    cwd: svModuleSourceDirPath,
+  }) ?? svModuleSourceDirPath
 
   const r: ShivvieService<T>['r'] = (template, additionalData = {}) => {
     return Handlebars.compile(template)({
@@ -137,7 +161,7 @@ export function createShivvieService<T extends Record<string, unknown>>(props: {
     const { from, to, inputData } = props
 
     return ShivvieActionConstructor.shivvie({
-      from: p.fromSource(from),
+      from: from.startsWith('@:') ? r(nodePath.resolve(registryPath, from.slice(2))) : r(p.fromSource(from)),
       to: r(p.fromTarget(to)),
       inputData: inputData ?? {},
     })

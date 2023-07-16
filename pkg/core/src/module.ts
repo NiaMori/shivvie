@@ -37,7 +37,7 @@ export async function execShivvieModule(props: {
 
   const i = await svModule.input.parseAsync(inputData)
 
-  const service = createShivvieService({
+  const service = await createShivvieService({
     i,
     svModuleSourceDirPath,
     targetDirPath,

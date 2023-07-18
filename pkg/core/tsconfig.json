@@ -19,11 +19,11 @@
     "lib": ["ESNext"],
     "types": ["node"],
     "module": "ESNext",
-    "moduleResolution": "Node"
+    "moduleResolution": "Bundler"
   },
 
   "include": [
     "src",
-    "tsup.config.ts"
+    "rollup.config.ts"
   ]
 }

@@ -8,18 +8,19 @@
   "homepage": "https://github.com/niamori/shivvie/pkg/core",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": {
+      "import": "./dist/esm/*.mjs"
     }
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
+      ".": [
+        "./dist/esm/index.d.mts"
       ]
     }
   },
@@ -27,14 +28,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
     "lint": "eslint .",
-    "test": "vitest --run --coverage"
+    "test": "vitest --run --coverage",
+    "build": "rollup --config rollup.config.ts --configPlugin esbuild",
+    "dev": "pnpm build --watch"
   },
   "dependencies": {
     "@niamori/json-manipulator": "^0.0.2",
-    "@niamori/utils": "^0.2.2",
+    "@niamori/utils": "^0.3.0",
     "bundle-require": "^4.0.1",
     "chalk": "^5.3.0",
     "fast-glob": "^3.3.0",
@@ -50,9 +51,12 @@
   },
   "devDependencies": {
     "@niamori/eslint-config": "^0.0.2",
+    "@niamori/rollup-config": "link:/home/niamori/i/rollup-config",
     "@types/node": "^20.4.2",
     "eslint": "^8.45.0",
-    "tsup": "^7.1.0",
+    "locate-path": "^7.2.0",
+    "rollup": "^3.26.3",
+    "rollup-plugin-esbuild": "^5.0.0",
     "zx": "^7.2.3"
   },
   "publishConfig": {

@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@niamori/eslint-config": "^0.0.2",
-    "@niamori/rollup-config": "link:/home/niamori/i/rollup-config",
+    "@niamori/rollup-config": "^0.0.2",
     "@types/node": "^20.4.2",
     "eslint": "^8.45.0",
     "locate-path": "^7.2.0",

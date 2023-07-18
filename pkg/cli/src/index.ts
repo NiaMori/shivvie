@@ -12,8 +12,7 @@ import chalk from 'chalk'
 import { rootTemporaryDirectory } from 'tempy'
 import { addDependency, installDependencies } from 'nypm'
 import { resolve as mllyResolve } from 'mlly'
-import { execShivvieModule } from '@niamori/shivvie.core'
-import packageJson from '../package.json'
+import { execShivvieModule } from '@niamori/shivvie.core/module'
 import { logger } from '@/logger'
 
 async function resolveShivvieUri(uri: string) {
@@ -136,6 +135,10 @@ async function resolveShivvieUri(uri: string) {
 program
   .showHelpAfterError(true)
   .showSuggestionAfterError(true)
+
+const packageJson = z.object({
+  version: z.string(),
+}).parse(JSON.parse(await fs.promises.readFile(new URL('../package.json', import.meta.url), 'utf-8')))
 
 program
   .name('shivvie')

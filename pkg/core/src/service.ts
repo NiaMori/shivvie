@@ -66,7 +66,7 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
 }) {
   const { i, svModuleSourceDirPath, targetDirPath } = props
 
-  const registryPath = await findUp(async (directory) => {
+  const registryPath = await findUp(async (directory: string) => {
     const packageJsonPath = nodePath.join(directory, 'package.json')
 
     if (await pathExists(packageJsonPath)) {

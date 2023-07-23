@@ -1,26 +1,29 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "noEmit": true,
-
-    "rootDir": ".",
-
     "target": "ESNext",
     "lib": ["ESNext"],
+
     "module": "NodeNext",
+    "rootDir": ".",
     "moduleResolution": "NodeNext",
+    "types": ["node"],
     "customConditions": ["dev:@niamori/shivvie.cli"],
-    "types": ["node"]
+
+    "allowJs": false,
+
+    "noEmit": true,
+
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "preserveSymlinks": false,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+
+    "strict": true,
+
+    "skipLibCheck": true
   },
 
-  "include": [
-    "src",
-    "rollup.config.ts"
-  ]
+  "include": ["src", "rollup.config.ts"]
 }

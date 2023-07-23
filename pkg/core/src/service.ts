@@ -7,8 +7,8 @@ import type { manipulate } from '@niamori/json-manipulator'
 import { resolveSync as mllyResolveSync } from 'mlly'
 import { findUp, pathExists } from 'find-up'
 import { z } from 'zod'
-import type { ShivvieAction } from '@/action'
-import { ShivvieActionConstructor } from '@/action'
+import type { ShivvieAction } from '@niamori/shivvie.core/action'
+import { ShivvieActionConstructor } from '@niamori/shivvie.core/action'
 
 export interface ShivvieService<T = Record<string, unknown>> {
   i: T

@@ -8,19 +8,22 @@
   "homepage": "https://github.com/niamori/shivvie/pkg/core",
   "exports": {
     ".": {
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/esm/src/index.js",
+      "require": "./dist/esm/src/index.js"
     },
     "./*": {
-      "import": "./dist/esm/*.mjs"
+      "dev:@niamori/shivvie.core": "./src/*.js",
+      "import": "./dist/esm/src/*.js",
+      "require": "./dist/esm/src/*.js"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/esm/src/index.js",
+  "module": "./dist/esm/src/index.js",
+  "types": "index.d.ts",
   "typesVersions": {
     "*": {
-      ".": [
-        "./dist/esm/index.d.mts"
+      "*": [
+        "./dist/esm/src/*"
       ]
     }
   },
@@ -30,7 +33,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "vitest --run --coverage",
-    "build": "rollup --config rollup.config.ts --configPlugin esbuild",
+    "build": "rollup --config rollup.config.ts --configPlugin typescript",
     "dev": "pnpm build --watch"
   },
   "dependencies": {
@@ -51,12 +54,11 @@
   },
   "devDependencies": {
     "@niamori/eslint-config": "^0.0.2",
-    "@niamori/rollup-config": "^0.0.2",
+    "@niamori/rollup-config": "^0.1.0",
     "@types/node": "^20.4.2",
     "eslint": "^8.45.0",
     "locate-path": "^7.2.0",
     "rollup": "^3.26.3",
-    "rollup-plugin-esbuild": "^5.0.0",
     "zx": "^7.2.3"
   },
   "publishConfig": {

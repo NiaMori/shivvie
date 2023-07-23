@@ -9,19 +9,14 @@
     "isolatedModules": true,
     "noEmit": true,
 
-    "resolveJsonModule": true,
-
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+    "rootDir": ".",
 
     "target": "ESNext",
     "lib": ["ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "types": [
-      "node"
-    ]
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "customConditions": ["dev:@niamori/shivvie.cli"],
+    "types": ["node"]
   },
 
   "include": [

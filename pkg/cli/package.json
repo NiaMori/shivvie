@@ -7,13 +7,13 @@
   "license": "MIT",
   "homepage": "https://github.com/niamori/shivvie/pkg/cli",
   "bin": {
-    "shivvie": "./dist/esm/index.mjs"
+    "shivvie": "./dist/esm/src/index.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup --config rollup.config.ts --configPlugin esbuild",
+    "build": "rollup --config rollup.config.ts --configPlugin typescript",
     "dev": "pnpm build --watch",
     "lint": "eslint ."
   },
@@ -34,11 +34,10 @@
   },
   "devDependencies": {
     "@niamori/eslint-config": "^0.0.2",
-    "@niamori/rollup-config": "^0.0.2",
+    "@niamori/rollup-config": "^0.1.0",
     "@types/node": "^20.4.2",
     "eslint": "^8.45.0",
-    "rollup": "^3.26.3",
-    "rollup-plugin-esbuild": "^5.0.0"
+    "rollup": "^3.26.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",

@@ -61,8 +61,8 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2(eslint@8.45.0)(typescript@5.1.6)
       '@niamori/rollup-config':
-        specifier: ^0.0.2
-        version: 0.0.2(typescript@5.1.6)
+        specifier: ^0.1.0
+        version: 0.1.0(typescript@5.1.6)
       '@types/node':
         specifier: ^20.4.2
         version: 20.4.2
@@ -72,9 +72,6 @@ importers:
       rollup:
         specifier: ^3.26.3
         version: 3.26.3
-      rollup-plugin-esbuild:
-        specifier: ^5.0.0
-        version: 5.0.0(esbuild@0.18.11)(rollup@3.26.3)
 
   pkg/core:
     dependencies:
@@ -125,8 +122,8 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2(eslint@8.45.0)(typescript@5.1.6)
       '@niamori/rollup-config':
-        specifier: ^0.0.2
-        version: 0.0.2(typescript@5.1.6)
+        specifier: ^0.1.0
+        version: 0.1.0(typescript@5.1.6)
       '@types/node':
         specifier: ^20.4.2
         version: 20.4.2
@@ -139,9 +136,6 @@ importers:
       rollup:
         specifier: ^3.26.3
         version: 3.26.3
-      rollup-plugin-esbuild:
-        specifier: ^5.0.0
-        version: 5.0.0(esbuild@0.18.11)(rollup@3.26.3)
       zx:
         specifier: ^7.2.3
         version: 7.2.3
@@ -297,6 +291,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-arm@0.18.11:
@@ -305,6 +300,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/android-x64@0.18.11:
@@ -313,6 +309,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-arm64@0.18.11:
@@ -321,6 +318,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/darwin-x64@0.18.11:
@@ -329,6 +327,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/freebsd-arm64@0.18.11:
@@ -337,6 +336,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/freebsd-x64@0.18.11:
@@ -345,6 +345,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-arm64@0.18.11:
@@ -353,6 +354,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-arm@0.18.11:
@@ -361,6 +363,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-ia32@0.18.11:
@@ -369,6 +372,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-loong64@0.18.11:
@@ -377,6 +381,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-mips64el@0.18.11:
@@ -385,6 +390,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-ppc64@0.18.11:
@@ -393,6 +399,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-riscv64@0.18.11:
@@ -401,6 +408,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-s390x@0.18.11:
@@ -409,6 +417,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/linux-x64@0.18.11:
@@ -417,6 +426,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/netbsd-x64@0.18.11:
@@ -425,6 +435,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/openbsd-x64@0.18.11:
@@ -433,6 +444,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/sunos-x64@0.18.11:
@@ -441,6 +453,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-arm64@0.18.11:
@@ -449,6 +462,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-ia32@0.18.11:
@@ -457,6 +471,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@esbuild/win32-x64@0.18.11:
@@ -465,6 +480,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: false
     optional: true
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.45.0):
@@ -572,8 +588,8 @@ packages:
       zod: 3.21.4
     dev: false
 
-  /@niamori/rollup-config@0.0.2(typescript@5.1.6):
-    resolution: {integrity: sha512-1WvNgSY9pyra4xDJ+Py4SAUnWOAaXxMLKu8tNjA1OZAJuW07U7jdCfvrhpJ/+yWlBKwYsawjtgcu3AUyRDHF6A==}
+  /@niamori/rollup-config@0.1.0(typescript@5.1.6):
+    resolution: {integrity: sha512-gJKJSRoysb4wjgUSXEVnAkwvO5Nt/bZNa7Xr+SoRrF32r1JK3JVcEMGeVoMwLenoL3MDPYGKPuP6M5CGxvQyHA==}
     dependencies:
       '@niamori/utils': 0.3.0
       '@rollup/plugin-typescript': 11.1.2(rollup@3.26.3)(typescript@5.1.6)
@@ -581,7 +597,6 @@ packages:
       rollup: 3.26.3
       rollup-plugin-dts: 5.3.0(rollup@3.26.3)(typescript@5.1.6)
       rollup-plugin-node-externals: 6.1.1(rollup@3.26.3)
-      rollup-plugin-tsconfig-paths: 1.5.1(rollup@3.26.3)(typescript@5.1.6)
       rxjs: 7.8.1
       ts-pattern: 5.0.3
       tsc-alias: 1.8.7
@@ -1443,10 +1458,6 @@ packages:
       which-typed-array: 1.1.10
     dev: true
 
-  /es-module-lexer@1.3.0:
-    resolution: {integrity: sha512-vZK7T0N2CBmBOixhmjdqx2gWVbFZ4DXZ/NyRMZVlJXPa7CyFS+/a4QQsDGDQy9ZfEzxFuNEsMLeQJnKP2p5/JA==}
-    dev: true
-
   /es-set-tostringtag@2.0.1:
     resolution: {integrity: sha512-g3OMbtlwY3QewlqAiMLI47KywjWZoEytKr8pf6iTC8uJq5bIAH52Z9pnQ8pVL6whrCto53JZDuUIsifGeLorTg==}
     engines: {node: '>= 0.4'}
@@ -1499,6 +1510,7 @@ packages:
       '@esbuild/win32-arm64': 0.18.11
       '@esbuild/win32-ia32': 0.18.11
       '@esbuild/win32-x64': 0.18.11
+    dev: false
 
   /escape-string-regexp@1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
@@ -2564,11 +2576,6 @@ packages:
     hasBin: true
     dev: true
 
-  /joycon@3.1.1:
-    resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
-    engines: {node: '>=10'}
-    dev: true
-
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
@@ -3370,24 +3377,6 @@ packages:
       '@babel/code-frame': 7.22.5
     dev: true
 
-  /rollup-plugin-esbuild@5.0.0(esbuild@0.18.11)(rollup@3.26.3):
-    resolution: {integrity: sha512-1cRIOHAPh8WQgdQQyyvFdeOdxuiyk+zB5zJ5+YOwrZP4cJ0MT3Fs48pQxrZeyZHcn+klFherytILVfE4aYrneg==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    peerDependencies:
-      esbuild: '>=0.10.1'
-      rollup: ^1.20.0 || ^2.0.0 || ^3.0.0
-    dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.3)
-      debug: 4.3.4
-      es-module-lexer: 1.3.0
-      esbuild: 0.18.11
-      joycon: 3.1.1
-      jsonc-parser: 3.2.0
-      rollup: 3.26.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /rollup-plugin-node-externals@6.1.1(rollup@3.26.3):
     resolution: {integrity: sha512-127OFMkpH5rBVlRHRBDUMk1m1sGuzbGy7so5aj/IkpUb2r3+wOWjR/erUzd2ChEQWPsxsyQG6xpYYvPBAdcBRA==}
     engines: {node: '>=16.0.0'}
@@ -3395,17 +3384,6 @@ packages:
       rollup: ^3.0.0
     dependencies:
       rollup: 3.26.3
-    dev: true
-
-  /rollup-plugin-tsconfig-paths@1.5.1(rollup@3.26.3)(typescript@5.1.6):
-    resolution: {integrity: sha512-HhqSvheeEdSQY/X1gMj7MBccx9BE4FbzIaCrRpOqNc9OwvbqbTf1WOUY56bGW4nJ3OWLOuzaBFJFle9LeRmXIg==}
-    peerDependencies:
-      rollup: ^2 || ^3
-    dependencies:
-      rollup: 3.26.3
-      typescript-paths: 1.5.1(typescript@5.1.6)
-    transitivePeerDependencies:
-      - typescript
     dev: true
 
   /rollup@3.26.3:
@@ -3875,14 +3853,6 @@ packages:
       type-fest: 3.13.0
       zod: 3.21.4
     dev: false
-
-  /typescript-paths@1.5.1(typescript@5.1.6):
-    resolution: {integrity: sha512-lYErSLCON2MSplVV5V/LBgD4UNjMgY3guATdFCZY2q1Nr6OZEu4q6zX/rYMsG1TaWqqQSszg6C9EU7AGWMDrIw==}
-    peerDependencies:
-      typescript: ^4.7.2 || ^5
-    dependencies:
-      typescript: 5.1.6
-    dev: true
 
   /typescript@5.1.6:
     resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}

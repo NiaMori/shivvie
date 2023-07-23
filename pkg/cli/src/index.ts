@@ -13,7 +13,7 @@ import { rootTemporaryDirectory } from 'tempy'
 import { addDependency, installDependencies } from 'nypm'
 import { resolve as mllyResolve } from 'mlly'
 import { execShivvieModule } from '@niamori/shivvie.core/module'
-import { logger } from '@/logger'
+import { logger } from '@niamori/shivvie.core/logger'
 
 async function resolveShivvieUri(uri: string) {
   const re = createRegExp(exactly(

@@ -11,11 +11,11 @@ import { manipulateJson } from '@niamori/json-manipulator'
 import { define } from '@niamori/utils'
 import type { OperationOptions } from 'nypm'
 import { addDependency, addDevDependency, installDependencies, removeDependency } from 'nypm'
-import { logger } from '@/logger'
-import type { ShivvieAction } from '@/action'
-import { ShivvieActionConstructor, isShivvieAction } from '@/action'
-import type { ShivvieService } from '@/service'
-import { createShivvieService } from '@/service'
+import { logger } from '@niamori/shivvie.core/logger'
+import type { ShivvieAction } from '@niamori/shivvie.core/action'
+import { ShivvieActionConstructor, isShivvieAction } from '@niamori/shivvie.core/action'
+import type { ShivvieService } from '@niamori/shivvie.core/service'
+import { createShivvieService } from '@niamori/shivvie.core/service'
 
 export interface ShivvieModule<T extends Record<string, unknown> = Record<string, unknown>> {
   input: ZodSchema<T>

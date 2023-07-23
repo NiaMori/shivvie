@@ -16,6 +16,7 @@ import type { ShivvieAction } from '@niamori/shivvie.core/action'
 import { ShivvieActionConstructor, isShivvieAction } from '@niamori/shivvie.core/action'
 import type { ShivvieService } from '@niamori/shivvie.core/service'
 import { createShivvieService } from '@niamori/shivvie.core/service'
+import Handlebars from 'handlebars'
 
 export interface ShivvieModule<T extends Record<string, unknown> = Record<string, unknown>> {
   input: ZodSchema<T>

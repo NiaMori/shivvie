@@ -12,6 +12,8 @@ import chalk from 'chalk'
 import { rootTemporaryDirectory } from 'tempy'
 import { addDependency, installDependencies } from 'nypm'
 import { resolve as mllyResolve } from 'mlly'
+import { findUp } from 'find-up'
+
 import { execShivvieModule } from '@niamori/shivvie.core/module'
 import { logger } from '@niamori/shivvie.core/logger'
 
@@ -136,9 +138,11 @@ program
   .showHelpAfterError(true)
   .showSuggestionAfterError(true)
 
+const packageJsonPath = z.string().parse(await findUp('package.json', { cwd: new URL('.', import.meta.url).pathname }))
+
 const packageJson = z.object({
   version: z.string(),
-}).parse(JSON.parse(await fs.promises.readFile(new URL('../package.json', import.meta.url), 'utf-8')))
+}).parse(JSON.parse(await fs.promises.readFile(packageJsonPath, 'utf-8')))
 
 program
   .name('shivvie')

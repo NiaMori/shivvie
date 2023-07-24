@@ -17,6 +17,7 @@ import { ShivvieActionConstructor, isShivvieAction } from '@niamori/shivvie.core
 import type { ShivvieService } from '@niamori/shivvie.core/service'
 import { createShivvieService } from '@niamori/shivvie.core/service'
 import Handlebars from 'handlebars'
+import { pathExists } from 'find-up'
 
 export interface ShivvieModule<T extends Record<string, unknown> = Record<string, unknown>> {
   input: ZodSchema<T>
@@ -129,9 +130,12 @@ export async function applyAction(action: ShivvieAction) {
   } else if (action.tag === 'nypm') {
     const { cwd, names, dev, rm } = action.content
 
+    const isWorkspaceRoot = await pathExists(nodePath.join(cwd, 'pnpm-workspace.yaml'))
+
     const options = define<OperationOptions>({
       cwd,
       silent: true,
+      workspace: isWorkspaceRoot,
     })
 
     // FIXME: install/remove packages in one command

@@ -32,7 +32,6 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "vitest --run --coverage",
     "build": "rollup --config rollup.config.ts --configPlugin typescript",
     "dev": "pnpm build --watch"
   },

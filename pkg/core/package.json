@@ -8,13 +8,13 @@
   "homepage": "https://github.com/niamori/shivvie/pkg/core",
   "exports": {
     ".": {
-      "import": "./dist/esm/src/index.js",
-      "require": "./dist/esm/src/index.js"
+      "require": "./dist/esm/src/index.js",
+      "import": "./dist/esm/src/index.js"
     },
     "./*": {
       "dev:@niamori/shivvie.core": "./src/*.js",
-      "import": "./dist/esm/src/*.js",
-      "require": "./dist/esm/src/*.js"
+      "require": "./dist/esm/src/*.js",
+      "import": "./dist/esm/src/*.js"
     }
   },
   "main": "./dist/esm/src/index.js",

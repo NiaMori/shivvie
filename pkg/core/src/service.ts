@@ -1,5 +1,6 @@
 import nodePath from 'node:path'
 import fs from 'node:fs'
+import path from 'node:path'
 import { define } from '@niamori/utils'
 import Handlebars from 'handlebars'
 import type { Draft } from 'immer'
@@ -9,18 +10,27 @@ import { findUp, pathExists } from 'find-up'
 import { z } from 'zod'
 import type { ShivvieAction } from '@niamori/shivvie.core/action'
 import { ShivvieActionConstructor } from '@niamori/shivvie.core/action'
+import { rootTemporaryDirectory } from 'tempy'
+import { ulid } from 'ulid'
 
 export interface ShivvieService<T = Record<string, unknown>> {
   i: T
   p: ShivviePathService
   a: ShivvieActionService
   r: (template: string, additionalData?: Record<string, unknown>) => string
+  u: ShivvieUtilsService
 }
 
 export interface ShivviePathService {
   fromCwd: (...paths: string[]) => string
   fromSource: (...paths: string[]) => string
   fromTarget: (...paths: string[]) => string
+}
+
+export interface ShivvieUtilsService {
+  temp: {
+    write: (name: string, text: string) => Promise<string>
+  }
 }
 
 export interface ShivvieActionService {
@@ -200,8 +210,19 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
     nun,
   })
 
+  const u = define<ShivvieUtilsService>({
+    temp: {
+      async write(name, text) {
+        const tempPath = path.join(rootTemporaryDirectory, 'shivvie', ulid(), name)
+        await fs.promises.mkdir(path.dirname(tempPath), { recursive: true })
+        await fs.promises.writeFile(tempPath, text)
+        return tempPath
+      },
+    },
+  })
+
   const service = define<ShivvieService<T>>({
-    i, p, a, r,
+    i, p, a, r, u,
   })
 
   return service

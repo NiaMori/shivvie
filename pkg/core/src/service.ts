@@ -3,8 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { define } from '@niamori/utils'
 import Handlebars from 'handlebars'
-import type { Draft } from 'immer'
-import type { manipulate } from '@niamori/json-manipulator'
+import type { Manipulator } from '@niamori/manipulator.core'
 import { resolveSync as mllyResolveSync } from 'mlly'
 import { findUp, pathExists } from 'find-up'
 import { z } from 'zod'
@@ -47,14 +46,9 @@ export interface ShivvieActionService {
     additionalData?: Record<string, unknown>
   }): ShivvieAction
 
-  manipulate<T extends keyof typeof manipulate>(preset: T, props: {
+  manipulate<T extends keyof Manipulator>(preset: T, props: {
     path: string
-    manipulator: Parameters<typeof manipulate[T]>[1]
-  }): ShivvieAction
-
-  manipulateJson<T = unknown>(props: {
-    path: string
-    manipulator: (dr: Draft<T>) => void
+    manipulator: Manipulator[T]['recipe']
   }): ShivvieAction
 
   zxFunction (fn: () => Promise<void>): ShivvieAction
@@ -144,16 +138,7 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
   const manipulate: ShivvieActionService['manipulate'] = (preset, props) => {
     const { path, manipulator } = props
 
-    return ShivvieActionConstructor.manipulateJson({
-      path: r(p.fromTarget(path)),
-      manipulator: manipulator as any,
-    })
-  }
-
-  const manipulateJson: ShivvieActionService['manipulateJson'] = (props) => {
-    const { path, manipulator } = props
-
-    return ShivvieActionConstructor.manipulateJson({
+    return ShivvieActionConstructor.manipulate({
       path: r(p.fromTarget(path)),
       manipulator: manipulator as any,
     })
@@ -203,7 +188,6 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
     render,
     cascade,
     manipulate,
-    manipulateJson,
     zxFunction,
     shivvie,
     ni,

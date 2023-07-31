@@ -36,7 +36,7 @@
     "dev": "pnpm build --watch"
   },
   "dependencies": {
-    "@niamori/json-manipulator": "^0.0.2",
+    "@niamori/manipulator.core": "^0.2.2",
     "@niamori/utils": "^0.3.0",
     "bundle-require": "^4.0.1",
     "chalk": "^5.3.0",

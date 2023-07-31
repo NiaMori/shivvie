@@ -29,7 +29,7 @@ export type ShivvieAction = Enum<{
     inputData: Record<string, unknown>
   }
 
-  manipulateJson: {
+  manipulate: {
     path: string
     manipulator: (dr: Draft<unknown>) => void
   }

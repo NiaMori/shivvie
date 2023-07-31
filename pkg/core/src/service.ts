@@ -139,6 +139,7 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
 
     return ShivvieActionConstructor.manipulate({
       path: r(p.fromTarget(path)),
+      preset,
       manipulator: manipulator as any,
     })
   }

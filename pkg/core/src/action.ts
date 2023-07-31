@@ -1,5 +1,6 @@
 import type { Draft } from 'immer'
 import { Enum } from '@niamori/utils'
+import type { Manipulator } from '@niamori/manipulator.core'
 
 const ShivvieActionIndicator = Symbol('ShivvieActionIndicator')
 
@@ -31,6 +32,7 @@ export type ShivvieAction = Enum<{
 
   manipulate: {
     path: string
+    preset: keyof Manipulator
     manipulator: (dr: Draft<unknown>) => void
   }
 

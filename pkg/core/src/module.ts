@@ -7,7 +7,6 @@ import { match } from 'ts-pattern'
 import { bundleRequire } from 'bundle-require'
 import chalk from 'chalk'
 import fg from 'fast-glob'
-import { manipulateJson } from '@niamori/json-manipulator'
 import { define } from '@niamori/utils'
 import type { OperationOptions } from 'nypm'
 import { addDependency, addDevDependency, installDependencies, removeDependency } from 'nypm'
@@ -18,6 +17,7 @@ import type { ShivvieService } from '@niamori/shivvie.core/service'
 import { createShivvieService } from '@niamori/shivvie.core/service'
 import Handlebars from 'handlebars'
 import { pathExists } from 'find-up'
+import { manipulator } from '@niamori/manipulator.core'
 
 export interface ShivvieModule<T extends Record<string, unknown> = Record<string, unknown>> {
   input: ZodSchema<T>
@@ -96,13 +96,13 @@ export async function applyAction(action: ShivvieAction) {
         renderingData,
       }))
     }))
-  } else if (action.tag === 'manipulateJson') {
-    const { path, manipulator } = action.content
+  } else if (action.tag === 'manipulate') {
+    const { path, manipulator: recipe, preset } = action.content
 
-    logger.info(`Manipulating Json File '${chalk.gray(path)}'...`)
+    logger.info(`Manipulating "${preset}" File '${chalk.gray(path)}'...`)
 
     const originalText = await fs.promises.readFile(path, 'utf-8')
-    const manipulatedText = manipulateJson(originalText, manipulator)
+    const manipulatedText = manipulator(preset)(recipe)(originalText)
     await fs.promises.writeFile(path, manipulatedText)
   } else if (action.tag === 'zx') {
     const { cwd, scriptFn, zxPath } = action.content

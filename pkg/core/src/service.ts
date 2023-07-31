@@ -1,6 +1,5 @@
 import nodePath from 'node:path'
 import fs from 'node:fs'
-import path from 'node:path'
 import { define } from '@niamori/utils'
 import Handlebars from 'handlebars'
 import type { Manipulator } from '@niamori/manipulator.core'
@@ -197,8 +196,8 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
   const u = define<ShivvieUtilsService>({
     temp: {
       async write(name, text) {
-        const tempPath = path.join(rootTemporaryDirectory, 'shivvie', ulid(), name)
-        await fs.promises.mkdir(path.dirname(tempPath), { recursive: true })
+        const tempPath = nodePath.join(rootTemporaryDirectory, 'shivvie', ulid(), name)
+        await fs.promises.mkdir(nodePath.dirname(tempPath), { recursive: true })
         await fs.promises.writeFile(tempPath, text)
         return tempPath
       },

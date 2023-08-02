@@ -15,9 +15,9 @@ import type { ShivvieAction } from '@niamori/shivvie.core/action'
 import { ShivvieActionConstructor, isShivvieAction } from '@niamori/shivvie.core/action'
 import type { ShivvieService } from '@niamori/shivvie.core/service'
 import { createShivvieService } from '@niamori/shivvie.core/service'
-import Handlebars from 'handlebars'
 import { pathExists } from 'find-up'
 import { manipulator } from '@niamori/manipulator.core'
+import { renderTemplate } from '@niamori/shivvie.core/render'
 
 export interface ShivvieModule<T extends Record<string, unknown> = Record<string, unknown>> {
   input: ZodSchema<T>
@@ -73,7 +73,7 @@ export async function applyAction(action: ShivvieAction) {
     logger.info(`Rendering '${chalk.gray(from)}' to '${chalk.gray(to)}'...`)
 
     const template = await fs.promises.readFile(from, 'utf-8')
-    const rendered = Handlebars.compile(template)(renderingData)
+    const rendered = renderTemplate(template, renderingData)
 
     await fs.promises.mkdir(nodePath.dirname(to), { recursive: true })
     await fs.promises.writeFile(to, rendered)

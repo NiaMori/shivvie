@@ -1,7 +1,6 @@
 import nodePath from 'node:path'
 import fs from 'node:fs'
 import { define } from '@niamori/utils'
-import Handlebars from 'handlebars'
 import type { Manipulator } from '@niamori/manipulator.core'
 import { resolveSync as mllyResolveSync } from 'mlly'
 import { findUp, pathExists } from 'find-up'
@@ -10,6 +9,7 @@ import type { ShivvieAction } from '@niamori/shivvie.core/action'
 import { ShivvieActionConstructor } from '@niamori/shivvie.core/action'
 import { rootTemporaryDirectory } from 'tempy'
 import { ulid } from 'ulid'
+import { renderTemplate } from './render.js'
 
 export interface ShivvieService<T = Record<string, unknown>> {
   i: T
@@ -92,10 +92,7 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
   }) ?? svModuleSourceDirPath
 
   const r: ShivvieService<T>['r'] = (template, additionalData = {}) => {
-    return Handlebars.compile(template)({
-      ...i,
-      ...additionalData,
-    })
+    return renderTemplate(template, { ...i, ...additionalData })
   }
 
   const p: ShivviePathService = {

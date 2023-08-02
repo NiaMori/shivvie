@@ -48,6 +48,7 @@ export interface ShivvieActionService {
   manipulate<T extends keyof Manipulator>(preset: T, props: {
     path: string
     manipulator: Manipulator[T]['recipe']
+    touch?: boolean
   }): ShivvieAction
 
   zxFunction (fn: () => Promise<void>): ShivvieAction
@@ -135,12 +136,13 @@ export async function createShivvieService<T extends Record<string, unknown>>(pr
   }
 
   const manipulate: ShivvieActionService['manipulate'] = (preset, props) => {
-    const { path, manipulator } = props
+    const { path, manipulator, touch = false } = props
 
     return ShivvieActionConstructor.manipulate({
       path: r(p.fromTarget(path)),
       preset,
       manipulator: manipulator as any,
+      touch,
     })
   }
 

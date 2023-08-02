@@ -97,7 +97,15 @@ export async function applyAction(action: ShivvieAction) {
       }))
     }))
   } else if (action.tag === 'manipulate') {
-    const { path, manipulator: recipe, preset } = action.content
+    const { path, manipulator: recipe, preset, touch } = action.content
+
+    if (touch) {
+      if (!await pathExists(path)) {
+        logger.info(`Touching File '${chalk.gray(path)}'...`)
+        await fs.promises.mkdir(nodePath.dirname(path), { recursive: true })
+        await fs.promises.writeFile(path, '')
+      }
+    }
 
     logger.info(`Manipulating "${preset}" File '${chalk.gray(path)}'...`)
 

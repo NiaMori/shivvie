@@ -34,6 +34,7 @@ export type ShivvieAction = Enum<{
     path: string
     preset: keyof Manipulator
     manipulator: (dr: Draft<unknown>) => void
+    touch: boolean
   }
 
   nypm: {

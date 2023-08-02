@@ -82,8 +82,8 @@ importers:
   pkg/core:
     dependencies:
       '@niamori/manipulator.core':
-        specifier: link:/home/niamori/i/manipulator/pkg/core
-        version: 0.2.2
+        specifier: ^0.2.4
+        version: 0.2.4
       '@niamori/utils':
         specifier: ^0.3.0
         version: 0.3.0
@@ -587,10 +587,10 @@ packages:
       - typescript
     dev: true
 
-  /@niamori/manipulator.core@0.2.2:
-    resolution: {integrity: sha512-gqlttEcOFWKtkdkgY8yRA6kQy7WCNoxjJ0yDbdad/ThA9AXFcsJ1Gx3toYx0vcm9mhOfdhO/3EDDXjpf2+x+QA==}
+  /@niamori/manipulator.core@0.2.4:
+    resolution: {integrity: sha512-w2c/QSq5l/OKrecYuwoTXvZuEgjgffMkhSEKYK8kUmUisXplPIRSCKetVXgJS5UhwJcgehIhvTd2kNsRsjrTng==}
     dependencies:
-      '@niamori/manipulator.json': 0.2.2
+      '@niamori/manipulator.json': 0.2.4
       immer: 10.0.2
       ramda: 0.29.0
       ts-pattern: 5.0.4
@@ -599,8 +599,8 @@ packages:
       types-tsconfig: 2.0.2
     dev: false
 
-  /@niamori/manipulator.json@0.2.2:
-    resolution: {integrity: sha512-jmJv75Pmh/xZw2PJriV5Tbmyg8nSI/qbXt7JvTx18sC1nA5VhkA/jTbAfX8DHnL/m9IMvonSXJRnJvjAmwYfaQ==}
+  /@niamori/manipulator.json@0.2.4:
+    resolution: {integrity: sha512-m0us+A58YncrwOYzbgq9f7Wf5JHZBm6qT8mLoV447iN9QVXfj1Iys6d3c5LyXLgv7CjB64CXadLgcV0xUWEF3Q==}
     dependencies:
       '@humanwhocodes/momoa': 3.0.0
       '@niamori/utils': 0.4.0

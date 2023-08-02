@@ -9,6 +9,7 @@ import type { ShivvieAction } from '@niamori/shivvie.core/action'
 import { ShivvieActionConstructor } from '@niamori/shivvie.core/action'
 import { rootTemporaryDirectory } from 'tempy'
 import { ulid } from 'ulid'
+import type { ShivvieModule } from '@niamori/shivvie.core/module'
 import { renderTemplate } from './render.js'
 
 export interface ShivvieService<T = Record<string, unknown>> {
@@ -30,6 +31,10 @@ export interface ShivvieUtilsService {
     write: (name: string, text: string) => Promise<string>
   }
 }
+
+type isAllPropertyOptional<T> = { [K in keyof T]: undefined extends T[K] ? true : false } extends { [K in keyof T]: true } ? true : false
+
+type GetInputData<T> = isAllPropertyOptional<T> extends true ? { inputData?: T } : { inputData: T }
 
 export interface ShivvieActionService {
   render(props: {
@@ -53,11 +58,10 @@ export interface ShivvieActionService {
 
   zxFunction (fn: () => Promise<void>): ShivvieAction
 
-  shivvie(props: {
+  shivvie<S extends { default: Pick<ShivvieModule, 'input'> } = { default: ShivvieModule }>(props: {
     from: string
     to: string
-    inputData?: Record<string, unknown>
-  }): ShivvieAction
+  } & GetInputData<z.infer<S['default']['input']>>): ShivvieAction
 
   ni(props?: { cwd?: string; names?: string[]; dev?: boolean }): ShivvieAction
   nun(props: { cwd?: string; names: string[] }): ShivvieAction

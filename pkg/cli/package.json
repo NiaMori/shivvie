@@ -1,7 +1,7 @@
 {
   "name": "@niamori/shivvie.cli",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": false,
   "author": "NiaMori <Hellc5261@gmail.com> (https://github.com/niamori)",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@niamori/shivvie.core": "0.2.0",
+    "@niamori/shivvie.core": "0.2.1",
     "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "fast-glob": "^3.3.0",

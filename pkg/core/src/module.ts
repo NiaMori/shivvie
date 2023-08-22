@@ -128,7 +128,7 @@ export async function applyAction(action: ShivvieAction) {
   } else if (action.tag === 'shivvie') {
     const { from, to, inputData } = action.content
 
-    logger.info(`Executing Shivvie '${chalk.gray(from)}' to '${chalk.gray(from)}'...`)
+    logger.info(`Executing Shivvie '${chalk.gray(from)}' to '${chalk.gray(to)}'...`)
 
     await execShivvieModule({
       modulePath: from,

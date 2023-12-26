@@ -1,4 +1,3 @@
-import { defineConfig } from 'rollup'
-import { esm } from '@niamori/rollup-config/presets'
+import { esmLib } from '@niamori/rollup-config/presets'
 
-export default defineConfig(await esm())
+export default esmLib()

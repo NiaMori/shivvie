@@ -14,9 +14,12 @@ import { rootTemporaryDirectory } from 'tempy'
 import { addDependency, installDependencies } from 'nypm'
 import { resolve as mllyResolve } from 'mlly'
 import { findUp } from 'find-up'
+import { bundleRequire } from 'bundle-require'
+import { zodToTs, printNode } from 'zod-to-ts'
 
 import { execShivvieModule } from '@niamori/shivvie.core/module'
 import { logger } from '@niamori/shivvie.core/logger'
+import type { ShivvieModule } from '@niamori/shivvie.core'
 
 async function resolveShivvieUri(uri: string) {
   const re = createRegExp(exactly(
@@ -169,6 +172,27 @@ program
       modulePath,
       targetDirPath: path.resolve(process.cwd(), to),
     })
+  })
+
+program
+  .command('info')
+  .summary('get information about a shivvie')
+  .argument('<fr>', 'the shivvie uri to get information about')
+  .action(async (fr: string) => {
+    const modulePath = await resolveShivvieUri(fr)
+
+    const shivviePath = path.join(modulePath, 'shivvie.config.ts')
+
+    const br = await bundleRequire({
+      filepath: shivviePath,
+    })
+
+    const svModule = br.mod.default as ShivvieModule
+    const zod = svModule.input
+
+    const { node } = zodToTs(zod)
+    const type = printNode(node)
+    logger.info(`type Input = ${type}`)
   })
 
 async function main() {

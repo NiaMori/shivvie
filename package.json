@@ -8,8 +8,8 @@
     "dev": "nx run-many --target=dev --output-style=stream",
     "build": "nx run-many --target=build",
     "lint": "nx run-many --target=lint",
-    "bump": "bumpp pnpm-lock.yaml package.json ./pkg/*/package.json --no-push --execute 'syncpack fix-mismatches --filter @niamori/shivvie.*'",
-    "release": "pnpm bump && pnpm build && pnpm m exec npm publish"
+    "bump": "bumpp pnpm-lock.yaml package.json ./pkg/*/package.json --no-push",
+    "release": "pnpm bump && pnpm build && pnpm m publish"
   },
   "devDependencies": {
     "bumpp": "^9.1.1",

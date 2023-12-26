@@ -18,7 +18,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@niamori/shivvie.core": "0.2.3",
+    "@niamori/shivvie.core": "workspace:*",
     "bundle-require": "^4.0.1",
     "chalk": "^5.3.0",
     "commander": "^11.0.0",
